@@ -12,7 +12,7 @@ public class Task1 {
         Scanner scanner = new Scanner(System.in);
         int[] mas = new int[scanner.nextInt()];
         for (int i = 0; i < mas.length; i++) {
-            mas[i] = ((int) (Math.random() * 15));
+            mas[i] = (int) (Math.random() * 15);
             System.out.print(mas[i] + " "); //for watching
         }
     }
@@ -60,10 +60,14 @@ public class Task1 {
      * @param count - количество программистов
      */
     public static void countDevs(int count) {
-        if (count % 10 == 1) {
-            System.out.println(count + " программист");
-        } else if (count % 10 == 2 || count % 10 == 3 || count % 10 == 4) {
+        int number = count % 100;
+        int number2 = number % 10;
+        if (number > 11 & number <= 19) {
+            System.out.println(count + " программистов");
+        }else if (number2 < 5 & number2 > 1) {
             System.out.println(count + " программиста");
+        } else if (number2 == 1 & number != 11) {
+                System.out.println(count + " программист");
         } else {
             System.out.println(count + " программистов");
         }
@@ -96,7 +100,7 @@ public class Task1 {
 
         for (int i = 0; i < mass.length; i++) {
             for (int j = 0; j < mass[i].length; j++) {
-                mass[i][j] = ((int) (Math.random() * 15));
+                mass[i][j] = (int) (Math.random() * 15);
             }
         }
 
@@ -143,7 +147,7 @@ public class Task1 {
 
         for (int i = 0; i < mass.length; i++) {
             for (int j = 0; j < mass[i].length; j++) {
-                mass[i][j] = ((int) (Math.random() * 100));
+                mass[i][j] = (int) (Math.random() * 100);
             }
         }
 

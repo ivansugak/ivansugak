@@ -5,7 +5,10 @@ public class Main {
 //        System.out.println(Task1.operation(0));+
 //        Task1.calculateCountOfOddElementsInMatrix(new int[]{1, 2, 3, 4, 5, 6});+
 //        Task1.calculateSumOfDiagonalElements();+
-//        Task1.countDevs(103);+
+//        for (int i = 1; i < 41; i++) {
+//            Task1.countDevs(i);
+//        }
+//        Task1.countDevs(i);
 //        Task1.foobar(6);+
 //        Task1.foobar(10);+
 //        Task1.foobar(15);+
