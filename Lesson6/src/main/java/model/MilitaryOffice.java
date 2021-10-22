@@ -3,7 +3,15 @@ package model;
 import java.util.ArrayList;
 
 public class MilitaryOffice {
+
+    private PersonRegistry personRegistry;
+
     public MilitaryOffice(PersonRegistry personRegistry) {
+        this.personRegistry = personRegistry;
+    }
+
+    public PersonRegistry getPersonRegistry() {
+        return personRegistry;
     }
 
     public void findPerson(ArrayList<Person> listPerson) {
@@ -39,9 +47,9 @@ public class MilitaryOffice {
     public void countingPersonName(ArrayList<Person> listPerson) {
         ArrayList<Person> printList = new ArrayList<>();
 
-        for (int i = 0; i < listPerson.size(); i++) {
-            if ((listPerson.get(i).getSex().equals("man")) & listPerson.get(i).getAge() >= 18 & listPerson.get(i).getAge() <= 27 & listPerson.get(i).getName().equals("Александр")) {
-                printList.add(listPerson.get(i));
+        for (Person person : listPerson) {
+            if ((person.getSex().equals("man")) & person.getAge() >= 18 & person.getAge() <= 27 & person.getName().equals("Александр")) {
+                printList.add(person);
             }
         }
         System.out.println("Годных к воинской службе призывников с именем Александр " + printList.size());

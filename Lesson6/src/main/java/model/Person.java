@@ -3,10 +3,10 @@ package model;
 import java.util.Objects;
 
 public class Person {
-    String name;
-    int age;
-    String sex;
-    String address;
+    private String name;
+    private int age;
+    private String sex;
+    private String address;
 
     public String getName() {
         return name;

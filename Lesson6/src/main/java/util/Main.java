@@ -14,22 +14,19 @@ public class Main {
         Person person6 = new Person("Александр", 25, "man", "RB, Lida");
         Person person7 = new Person("Федор", 28, "man", "RB, Minsk");
 
-        PersonRegistry personRegistry = new PersonRegistry();
+        MilitaryOffice militaryOffice = new MilitaryOffice(new PersonRegistry());
 
-        MilitaryOffice militaryOffice = new MilitaryOffice(personRegistry);
+        militaryOffice.getPersonRegistry().getListPerson().add(person1);
+        militaryOffice.getPersonRegistry().getListPerson().add(person2);
+        militaryOffice.getPersonRegistry().getListPerson().add(person3);
+        militaryOffice.getPersonRegistry().getListPerson().add(person4);
+        militaryOffice.getPersonRegistry().getListPerson().add(person5);
+        militaryOffice.getPersonRegistry().getListPerson().add(person6);
+        militaryOffice.getPersonRegistry().getListPerson().add(person7);
 
-        personRegistry.getListPerson().add(person1);
-        personRegistry.getListPerson().add(person2);
-        personRegistry.getListPerson().add(person3);
-        personRegistry.getListPerson().add(person4);
-        personRegistry.getListPerson().add(person5);
-        personRegistry.getListPerson().add(person6);
-        personRegistry.getListPerson().add(person7);
-
-        militaryOffice.findPerson(personRegistry.getListPerson());
-        militaryOffice.countingPerson(personRegistry.getListPerson());
-        militaryOffice.countingPersonAge(personRegistry.getListPerson());
-        militaryOffice.countingPersonName(personRegistry.getListPerson());
-
+        militaryOffice.findPerson(militaryOffice.getPersonRegistry().getListPerson());
+        militaryOffice.countingPerson(militaryOffice.getPersonRegistry().getListPerson());
+        militaryOffice.countingPersonAge(militaryOffice.getPersonRegistry().getListPerson());
+        militaryOffice.countingPersonName(militaryOffice.getPersonRegistry().getListPerson());
     }
 }
