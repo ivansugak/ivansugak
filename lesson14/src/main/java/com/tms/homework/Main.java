@@ -21,7 +21,7 @@ public class Main {
                 .sorted((o1, o2) -> o2.getId() - o1.getId())
                 .collect(Collectors.toList()));
 
-        market.delete(product2);
+        market.delete(2);
 
         System.out.println(market.getList().stream()
                 .sorted((o1, o2) -> o2.getId() - o1.getId())

@@ -33,10 +33,12 @@ public class Market {
         }
     }
 
-    public void delete(Product product) {
-        boolean result = list.stream().anyMatch(s -> s.getId() == product.getId());
-        if (result) {
-            list.remove(product);
+    public void delete(int id) {
+        for (int j = 0; j < list.size(); j++) {
+            if (id == (list.get(j).getId())) {
+                list.remove(j);
+                return;
+            }
         }
     }
 }
