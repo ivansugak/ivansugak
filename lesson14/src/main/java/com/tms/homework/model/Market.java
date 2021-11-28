@@ -12,11 +12,8 @@ public class Market {
 
 
     public void add(Product product) {
-        for (int i = 0; i < list.size(); i++) {
-            boolean result = product.getId() == list.get(i).getId();
-            if (!result) {
-                list.add(product);
-            }
+        if (list.stream().noneMatch(p -> p.getId() == product.getId())) {
+            list.add(product);
         }
     }
 
@@ -26,7 +23,7 @@ public class Market {
 
     public void update(Product product) {
         for (Product newProduct : list) {
-            if (product.getId() == (newProduct.getId())) {
+            if (product.getId() == newProduct.getId()) {
                 newProduct.setName(product.getName());
                 newProduct.setPrice(product.getPrice());
             }
@@ -34,11 +31,6 @@ public class Market {
     }
 
     public void delete(int id) {
-        for (int j = 0; j < list.size(); j++) {
-            if (id == (list.get(j).getId())) {
-                list.remove(j);
-                return;
-            }
-        }
+        list.removeIf(o -> o.getId() == id);
     }
 }
