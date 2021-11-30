@@ -7,6 +7,8 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.StringJoiner;
 
 
 @Getter
@@ -35,8 +37,15 @@ public class Person {
     }
 
     public static void getNameD(List<Person> personList) {
-        personList.stream()
-                .filter(p -> (p.getName().charAt(0) == 'Д'))
-                .forEach(System.out::println);
+
+        StringJoiner joiner = new StringJoiner(", ");
+        for (Person person : personList) {
+            if ((person.getName().charAt(0) == 'Д')) {
+                joiner.add(person.getName());
+            }
+        }
+        String string = Optional.of(joiner.toString()).get();
+        System.out.println(string);
+
     }
 }
