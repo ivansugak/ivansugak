@@ -14,9 +14,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Tasks tasks = new Tasks();
-        tasks.getNumbers(); //#1+
-        tasks.getEvenNumbers(); //#2+
-//        tasks.getNames(); //#3-
+        tasks.getNumbers();
+        tasks.getEvenNumbers();
+        tasks.getNames();
 
         Car.cars = Arrays.asList(
                 new Car("AA1111BX", 2007),
@@ -25,22 +25,22 @@ public class Main {
                 new Car("", 2015),
                 new Car("AI3838PP", 2017));
         Car car = new Car();
-        car.printCars(); //#4+
+        car.printCars();
 
         List<Person> personList = new ArrayList<>();
         Person person1 = new Person("Антонов", 21, Person.FEMALE);
         Person person2 = new Person("Детров", 35, Person.FEMALE);
-        Person person3 = new Person("Сидоров", 45, Person.FEMALE);
+        Person person3 = new Person("Дидоров", 45, Person.FEMALE);
         Person person4 = new Person("Александров", 50, Person.FEMALE);
         Collections.addAll(personList, person1, person2, person3, person4);
 
-        Person.getNameD(personList); //#5+- Optional to do?
+        Person.getNameD(personList);
 //_________________________________________________________________________
-        Library library = new Library(); //#6+
+        Library library = new Library(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()); //#6+
         Book book1 = new Book("Author1", "Сказки", 2021);
         Book book2 = new Book("Author2", "Приключения", 2018);
         Book book3 = new Book("Author3", "Детектив", 2020);
-        Book book4 = new Book("Author4", "Триллер", 2015);
+        Book book4 = new Book("Пушкин Александр Сергеевич", "Триллер", 2015);
         Collections.addAll(library.getListL(), book1, book2, book3, book4);
         System.out.println(library.getListBook(library.getListL()));
 
@@ -57,5 +57,9 @@ public class Main {
         reader4.getList().add(book4);
 
         System.out.println(library.getListEmailAndBooks(library.getListR()));
+
+        System.out.println(library.getAllBooksFromReaders(library.getListR()));
+
+        System.out.println(library.getCountReaderGetPushkin(library.getListR()));
     }
 }

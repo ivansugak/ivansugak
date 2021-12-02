@@ -1,9 +1,6 @@
 package com.tms.homework.task1;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Tasks {
@@ -14,7 +11,9 @@ public class Tasks {
             int num = (int) (Math.random() * 15);
             list.add(num);
         }
-        list.stream().map(x -> x * 2).forEach(System.out::println);
+        list.stream()
+                .map(x -> x * 2)
+                .forEach(System.out::println);
     }
 
     public void getEvenNumbers() { //2
@@ -24,17 +23,18 @@ public class Tasks {
             list.add(num);
         }
 
-        list.stream()
+        long count = list.stream()
                 .filter(x -> x % 2 == 0 && x != 0)
-                .collect(Collectors.toSet())
-                .forEach(System.out::println);
+                .count();
+        System.out.println(count);
     }
 
-//    public String getNames() {
-//        List<String> list = Arrays.asList("john", "arya", "sansa");
-//        list.stream().peek((p) -> p.substring(0, 1).toUpperCase() + p.substring(1))
-//                .collect(Collectors.toList())
-//                .forEach(System.out::println);
-//
-//    }
+    public void getNames() {
+        List<String> list = Arrays.asList("john", "arya", "sansa");
+        list.stream()
+                .map((p) -> p.substring(0, 1).toUpperCase() + p.substring(1))
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
+
+    }
 }
