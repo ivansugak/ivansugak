@@ -1,0 +1,25 @@
+#div1 {
+    background-color: green;
+    color: aliceblue;
+    text-align: center;
+}
+
+#div3 {
+    background-color: red;
+    color: aliceblue;
+    height: 50px;
+
+}
+
+#div5 {
+    background-color: rosybrown;
+    color: aliceblue;
+}
+
+#h2, h3 {
+    text-align: center;
+}
+
+#h5 {
+    text-align: justify;
+}

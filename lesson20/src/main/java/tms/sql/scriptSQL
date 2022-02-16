@@ -1,0 +1,113 @@
+1.
+SELECT student_ID, name, rating, group_ID
+FROM student
+WHERE rating = (SELECT MAX(rating) FROM student);
+
+SELECT student_ID, name, rating, group_ID
+FROM student
+WHERE rating = (SELECT MIN(rating) FROM student);
+_____________________________________________________________
+2.
+SELECT GR.name, COUNT(*) AS COUNT, AVG(ST.rating) AS AVGRATING
+FROM `student` ST
+INNER JOIN `groups` GR ON GR.group_ID = ST.group_ID
+GROUP BY ST.group_ID;
+_____________________________________________________________
+3.
+SELECT student_ID, name, rating, group_ID
+FROM student
+WHERE rating > (SELECT AVG(rating)
+                from student
+                WHERE group_ID = 3)
+  AND group_ID = 3;
+____________________________________________________________________________________
+4.
+SELECT COUNT(course_id), student_ID
+FROM studentscources
+GROUP BY student_ID
+HAVING COUNT(course_id) = 1;
+_______________________________________________________________________________
+5.
+SELECT COUNT(ss.course_ID), ss.course_ID, c.course_ID, c.name
+FROM `studentscources` ss
+INNER JOIN `course` c ON c.course_ID = ss.course_ID
+GROUP BY c.course_ID;
+________________________________________________________________________
+6.
+SELECT rating, COUNT(rating) AS POPULAR_RATING
+FROM student
+GROUP BY rating;
+________________________________________________________________________
+7.
+create database Warehouse_schema;
+
+use Warehouse_schema;
+
+create table if not exists Warehouse
+(
+    warehouseID   integer NOT NULL auto_increment,
+    name VARCHAR(100),
+    PRIMARY KEY (warehouseID)
+);
+
+create table if not exists Warehouse_Product
+(
+    warehouseID integer,
+    productID   integer
+);
+
+create table if not exists Product
+(
+    productID          integer NOT NULL auto_increment,
+    name        VARCHAR(100),
+    year        integer NOT NULL,
+    description VARCHAR(100),
+    cost_price  double  NOT NULL,
+    amount      integer,
+    PRIMARY KEY (productID)
+);
+
+create table if not exists Product_Customer
+(
+    customerID integer NOT NULL,
+    productID   integer NOT NULL
+);
+
+create table if not exists Customer
+(
+    customerID   integer NOT NULL auto_increment,
+    login        VARCHAR(100) UNIQUE,
+    password     VARCHAR(100) UNIQUE,
+    payment_card integer NOT NULL,
+    orderID    integer,
+    inquiryID integer,
+    PRIMARY KEY (customerID)
+);
+
+
+create table if not exists `Order`
+(
+    orderID    integer NOT NULL auto_increment,
+    priceOrder integer,
+    customerID   integer NOT NULL,
+    PRIMARY KEY (orderID)
+);
+
+create table if not exists Product_Order
+(
+    orderID integer NOT NULL,
+    productID   integer NOT NULL
+);
+
+create table if not exists `Inquiry`
+(
+    inquiryID integer NOT NULL auto_increment,
+    customerID   integer NOT NULL,
+    PRIMARY KEY (inquiryID)
+);
+
+create table if not exists Product_Inquiry
+(
+    inquiryID integer NOT NULL,
+    productID   integer NOT NULL
+);
