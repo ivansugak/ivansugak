@@ -1,13 +1,14 @@
 package dao;
 
+import entity.User;
+
 import java.util.List;
-import java.util.Optional;
 
 public interface Dao <K, T> {
 
     T save(T entity);
 
-    Optional<T> findById(K id);
+    T findById(K id);
 
     List<T> findAll();
 

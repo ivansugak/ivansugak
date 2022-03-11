@@ -11,7 +11,7 @@ import service.UserService;
 
 import java.io.IOException;
 
-@WebServlet("/loginServlet")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
     private final UserService userService = UserService.getInstance();
@@ -20,19 +20,21 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        UserDTO user = new UserDTO();
-        user.setLastName("Saburov");
+//        UserDTO user = new UserDTO();
+//        user.setLogin(login);
+//        user.setPassword(password);
+
 
 //        req.setAttribute("login", login);
 //        req.setAttribute("password", password);
 //        req.setAttribute("user", user);
 
-        HttpSession session = req.getSession();
-        session.setAttribute("login", login);
-        session.setAttribute("password", password);
-        session.setAttribute("user", user);
-
-        userService.save();
+//        HttpSession session = req.getSession();
+//        session.setAttribute("login", login);
+//        session.setAttribute("password", password);
+//        session.setAttribute("user", user);
+//
+//        userService.save();
 
     }
 
@@ -43,6 +45,6 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        userService.update(Integer.parseInt(req.getParameter("id")));
+//        userService.update(Integer.parseInt(req.getParameter("id")));
     }
 }

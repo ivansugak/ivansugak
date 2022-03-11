@@ -3,6 +3,7 @@ package service;
 import dao.UserDao;
 import dto.UserDTO;
 import entity.User;
+import mapper.UserMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,42 +24,48 @@ public class UserService {
         return userDao.findAll().stream()
                 .map(user -> new UserDTO(
                         user.getFirstName(),
-                        user.getLastName()
-                ))
+                        user.getLastName(),
+                        user.getEmail(),
+                        user.getDateOfBirth()))
                 .collect(Collectors.toList());
     }
 
     public UserDTO findUserByID(Integer id){
         if (id != null){
             User user = userDao.findById(id);
-            return new UserDTO(user.getFirstName(), user.getLastName());
+            return UserMapper.mapToDto(user);
         }
-        return null; //что с ДР и мылом?
+        return null;
     }
 
-    public UserDTO save() { // что с ДР? почему Nick, как метод будет работать с другими данными?
-        User user = new User();
-        user.setFirstName("Nick");
-        user.setLastName("Nick");
-        user.setEmail("nick@.com");
-//        user.setDateOfBirth("nick@.com");
+    public UserDTO save(UserDTO userDTO) {
+        User user = UserMapper.mapToEntity(userDTO);
 
         userDao.save(user);
 
-        return new UserDTO(user.getFirstName(), user.getLastName());
+        return null;
     }
 
     public void delete(Integer id) {
         userDao.delete(id);
     }
 
-    public void update(Integer id) { //не понятно зачем нам в ДТО CRUD методы
-        User user = new User();     //дублирующие ДАО
-        user.setFirstName("Nick");// что с ДР? почему Nick, как метод будет работать с другими данными?
-        user.setLastName("Nick");
-        user.setEmail("nick@.com");
+    public UserDTO update(Integer id, UserDTO userDTO) {
+        User user = new User();
+
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
+        user.setEmail(userDTO.getEmail());
+        user.setDateOfBirth(userDTO.getDateOfBirth());
 
         userDao.update(id, user);
+
+        return userDTO;
+    }
+
+    public UserDTO login(UserDTO userDTO) {
+        User user = userDao.findByLoginAndPassword(userDTO.getLogin(), userDTO.getPassword());
+        return UserMapper.mapToDto(user);
     }
 
 }
