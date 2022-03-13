@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpSession;
 import service.UserService;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 @WebServlet("/saveServlet")
 public class SaveServlet extends HttpServlet {
@@ -21,10 +23,12 @@ public class SaveServlet extends HttpServlet {
         String first_name = req.getParameter("first_name");
         String last_name = req.getParameter("last_name");
         String email = req.getParameter("email");
-        String date_of_birth = req.getParameter("date_of_birth");
+        LocalDate date_of_birth = LocalDate.parse(req.getParameter("date_of_birth"));
         UserDTO user = new UserDTO();
         user.setFirstName("first_name");
-        user.setLastName("last_name"); //как сохранить человека нового в базе? и как передать через дто мыло и др?
+        user.setLastName("last_name");
+        user.setEmail("email");
+        user.setDateOfBirth(date_of_birth);
 
         HttpSession session = req.getSession();
         session.setAttribute("first_name", first_name);
@@ -33,6 +37,6 @@ public class SaveServlet extends HttpServlet {
         session.setAttribute("date_of_birth", date_of_birth);
         session.setAttribute("user", user);
 
-        userService.save();
+//        userService.save();
     }
 }

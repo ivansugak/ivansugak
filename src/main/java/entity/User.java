@@ -10,6 +10,8 @@ public class User {
     private String email;
     private LocalDate dateOfBirth;
 
+    AuthCredential authCredential;
+
     public User() {
     }
 

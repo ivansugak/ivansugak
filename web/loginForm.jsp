@@ -7,7 +7,7 @@
 
 <h1>Please, enter login and password</h1>
 
-<form action="loginServlet" method="post">
+<form action="login" method="post">
 
     <label for="login">Login:</label>
     <input type="text" name="login" id="login"/><br/>
